@@ -1,6 +1,7 @@
 package com.nihal.springcoredemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,9 @@ public class PlayController {
     private Coach myCoach;
 
     // use of qualifier annotation
-    // @Autowired
-    // public PlayController(@Qualifier("volleyballCoach") Coach thisCoach) {
-    // myCoach = thisCoach;
-    // }
-
     @Autowired
-    public PlayController(Coach thisCoach) {
+    public PlayController(@Qualifier("volleyballCoach") Coach thisCoach) {
+        System.out.println("In constructor: " + getClass().getSimpleName());
         myCoach = thisCoach;
     }
 
