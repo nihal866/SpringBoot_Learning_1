@@ -18,8 +18,25 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createRecord(studentDAO);
+			// createRecord(studentDAO);
+
+			findRecord(studentDAO);
 		};
+	}
+
+	private void findRecord(StudentDAO studentDAO) {
+		int tempId = 1;
+
+		// fetch student based on the id
+		System.out.println("Fetching student with id: " + tempId);
+		Student fetchedStudent = studentDAO.findById(tempId);
+
+		// display name for the reocrd, if present
+		if (fetchedStudent != null) {
+			System.out.println("Found student" + fetchedStudent);
+		} else {
+			System.out.println("No student found with this id");
+		}
 	}
 
 	private void createRecord(StudentDAO studentDAO) {
