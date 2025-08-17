@@ -22,17 +22,17 @@ public class CruddemoApplication {
 		return runner -> {
 			createRecord(studentDAO);
 
-			findRecord(studentDAO);
+			// findRecord(studentDAO);
 
-			fetchAllRecords(studentDAO);
+			// fetchAllRecords(studentDAO);
 
-			fetchRecordsByLastName(studentDAO);
+			// fetchRecordsByLastName(studentDAO);
 
-			updateRecord(studentDAO);
+			// updateRecord(studentDAO);
 
-			updateRecordById(studentDAO);
+			// updateRecordById(studentDAO);
 
-			deleteAll(studentDAO);
+			// deleteAll(studentDAO);
 		};
 	}
 
