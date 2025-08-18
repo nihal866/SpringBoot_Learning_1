@@ -3,12 +3,17 @@ package com.nihal.restDemo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nihal.restDemo.entity.Student;
+import com.nihal.restDemo.exception.ErrorResponse;
+import com.nihal.restDemo.exception.StudentNotFoundException;
 
 import jakarta.annotation.PostConstruct;
 
@@ -35,10 +40,21 @@ public class StudentController {
     }
 
     @GetMapping("/list/{studentId}")
-    public Student getStudentDetails(@PathVariable int studentId) throws Exception {
-        if (studentId >= studentsList.size()) {
-            throw new IndexOutOfBoundsException();
+    public Student getStudentDetails(@PathVariable int studentId) {
+        if (studentId >= studentsList.size() || studentId < 0) {
+            throw new StudentNotFoundException("Student id not found - " + studentId);
         }
         return studentsList.get(studentId);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleException(StudentNotFoundException ex) {
+        ErrorResponse err = new ErrorResponse();
+
+        err.setMessage(ex.getMessage());
+        err.setTimeStamp(System.currentTimeMillis());
+        err.setStatusCode(HttpStatus.NOT_FOUND.value());
+
+        return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
 }
