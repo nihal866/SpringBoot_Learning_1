@@ -16,13 +16,31 @@
       <input type="text" id="lastName" th:field="*{lastName}" />
       <br /><br />
       <label for="country">Country:</label>
-      <select th:field="*{country}" id="country">
-        <option value="United States">United States</option>
-        <option value="India">India</option>
-        <option value="United Kingdom">United Kingdom</option>
-        <option value="Canada">Canada</option>
-        <option value="Australia">Australia</option>
+      <select th:field="*{country}">
+        <option
+          th:each="tempCountry : ${countries}"
+          th:value="${tempCountry}"
+          th:text="${tempCountry}"
+        ></option>
       </select>
+      <br /><br />
+      <label for="language">Language:</label>
+      <input
+        th:field="*{language}"
+        th:each="language : ${languages}"
+        type="radio"
+        th:value="${language}"
+        th:text="${language}"
+      />
+      <br /><br />
+      <label for="hobbies">Hobbies:</label>
+      <input
+        th:field="*{hobbies}"
+        th:each="hobby : ${hobbies}"
+        type="checkbox"
+        th:value="${hobby}"
+        th:text="${hobby}"
+      />
       <br /><br />
       <input type="submit" value="Submit" />
     </form>
