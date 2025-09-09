@@ -36,6 +36,30 @@
       <br />
       <br />
       <div>
+        <label for="freePasses">Free Passes:</label>
+        <input type="text" id="freePasses" th:field="*{freePasses}" />
+        <!-- Add error message -->
+        <span
+          th:if="${#fields.hasErrors('freePasses')}"
+          th:errors="*{freePasses}"
+          class="error"
+        ></span>
+      </div>
+      <br />
+      <br />
+      <div>
+        <label for="postalCode">Postal Code:</label>
+        <input type="text" id="postalCode" th:field="*{postalCode}" />
+        <!-- Add error message -->
+        <span
+          th:if="${#fields.hasErrors('postalCode')}"
+          th:errors="*{postalCode}"
+          class="error"
+        ></span>
+      </div>
+      <br />
+      <br />
+      <div>
         <input type="submit" value="Submit" />
       </div>
     </form>
