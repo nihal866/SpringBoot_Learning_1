@@ -1,5 +1,7 @@
 package com.nihal.demo.model;
 
+import com.nihal.demo.validation.CourseCode;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +22,9 @@ public class Customer {
 
     @Pattern(regexp = "^[0-9]{6}", message = "Enter valid 6 digits postal code.")
     private String postalCode;
+
+    @CourseCode(value = "NIHAL", message = "must starts with NIHAL")
+    private String couponCode;
 
     public String getPostalCode() {
         return postalCode;
@@ -51,6 +56,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getCouponCode() {
+        return couponCode;
+    }
+
+    public void setCouponCode(String couponCode) {
+        this.couponCode = couponCode;
     }
 
 }

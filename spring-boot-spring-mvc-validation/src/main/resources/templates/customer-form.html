@@ -60,6 +60,18 @@
       <br />
       <br />
       <div>
+        <label for="couponCode">Coupon Code:</label>
+        <input type="text" id="couponCode" th:field="*{couponCode}" />
+        <!-- Add error message -->
+        <span
+          th:if="${#fields.hasErrors('couponCode')}"
+          th:errors="*{couponCode}"
+          class="error"
+        ></span>
+      </div>
+      <br />
+      <br />
+      <div>
         <input type="submit" value="Submit" />
       </div>
     </form>
