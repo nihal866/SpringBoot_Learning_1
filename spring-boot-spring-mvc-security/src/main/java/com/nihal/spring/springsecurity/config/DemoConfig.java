@@ -26,7 +26,8 @@ public class DemoConfig {
         http.authorizeHttpRequests(configurer -> configurer.anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login")
                         .loginProcessingUrl("/authenticateTheUser")
-                        .permitAll());
+                        .permitAll())
+                .logout(logout -> logout.permitAll());
 
         return http.build();
     }
