@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leaders Meeting Page</title>
+  </head>
+  <body>
+    <h2>Welcome to the Leaders Meeting Page</h2>
+    <hr />
+    <br />
+    <div>Let's meet at Indiranagar. <i>Keep it secret from employees</i>.</div>
+    <form th:action="@{/}" method="get">
+      <input type="submit" value="Back" />
+    </form>
+  </body>
+</html>
