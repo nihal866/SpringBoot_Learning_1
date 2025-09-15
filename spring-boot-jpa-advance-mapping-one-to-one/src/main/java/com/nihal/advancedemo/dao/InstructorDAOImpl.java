@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nihal.advancedemo.entity.Instructor;
+import com.nihal.advancedemo.entity.InstructorDetail;
 
 import jakarta.persistence.EntityManager;
 
@@ -33,6 +34,22 @@ public class InstructorDAOImpl implements InstructorDAO {
     public void deleteInstructorById(int id) {
         Instructor instructor = entityManager.find(Instructor.class, id);
         entityManager.remove(instructor);
+    }
+
+    @Override
+    public InstructorDetail findinInstructorDetailById(int id) {
+        return entityManager.find(InstructorDetail.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteInstructorDetailById(int id) {
+        InstructorDetail instructorDetail = entityManager.find(InstructorDetail.class, id);
+
+        // remove the assosciated object reference to break bi-directional link
+        instructorDetail.getInstructor().setInstructorDetail(null);
+
+        entityManager.remove(instructorDetail);
     }
 
 }

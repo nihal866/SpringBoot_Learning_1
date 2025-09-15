@@ -21,8 +21,25 @@ public class AdvancedemoApplication {
 		return runner -> {
 			// createInsturctor(instructorDAO);
 			// findInstructor(instructorDAO);
-			deleteInstructor(instructorDAO);
+			// deleteInstructor(instructorDAO);
+			// findInstructorDetail(instructorDAO);
+			deleteInstructorDetail(instructorDAO);
 		};
+	}
+
+	private void deleteInstructorDetail(InstructorDAO instructorDAO) {
+		int id = 4;
+		instructorDAO.deleteInstructorDetailById(id);
+
+		System.out.println("Delete Successful.");
+	}
+
+	private void findInstructorDetail(InstructorDAO instructorDAO) {
+		int id = 2;
+		InstructorDetail instructorDetail = instructorDAO.findinInstructorDetailById(id);
+
+		System.out.println("Instructor Detail: " + instructorDetail);
+		System.out.println("Instructor Assosciated: " + instructorDetail.getInstructor());
 	}
 
 	private void createInsturctor(InstructorDAO instructorDAO) {
