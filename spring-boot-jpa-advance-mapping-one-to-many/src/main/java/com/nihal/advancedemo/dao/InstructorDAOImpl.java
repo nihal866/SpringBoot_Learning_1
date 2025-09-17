@@ -64,4 +64,25 @@ public class InstructorDAOImpl implements InstructorDAO {
         return courses;
     }
 
+    @Override
+    @Transactional
+    public void saveCourse(Course course) {
+        entityManager.persist(course);
+    }
+
+    @Override
+    public Course findCourseAndReviewsByCourseId(int id) {
+        TypedQuery<Course> query = entityManager
+                .createQuery("select c from Course c " + "JOIN FETCH c.reviews " + "where c.id = :data", Course.class);
+        query.setParameter("data", id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseByCourseId(int id) {
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
+    }
+
 }

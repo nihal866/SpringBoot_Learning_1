@@ -11,6 +11,7 @@ import com.nihal.advancedemo.dao.InstructorDAO;
 import com.nihal.advancedemo.entity.Course;
 import com.nihal.advancedemo.entity.Instructor;
 import com.nihal.advancedemo.entity.InstructorDetail;
+import com.nihal.advancedemo.entity.Review;
 
 @SpringBootApplication
 public class AdvancedemoApplication {
@@ -28,8 +29,41 @@ public class AdvancedemoApplication {
 			// findInstructorDetail(instructorDAO);
 			// deleteInstructorDetail(instructorDAO);
 			// createInstructorWithCourses(instructorDAO);
-			findInstructorWithCourses(instructorDAO);
+			// findInstructorWithCourses(instructorDAO);
+			// createCourseAndReviews(instructorDAO);
+			// findCourseAndReviews(instructorDAO);
+			deleteCourseAndReviews(instructorDAO);
 		};
+	}
+
+	private void deleteCourseAndReviews(InstructorDAO instructorDAO) {
+		int id = 10;
+		instructorDAO.deleteCourseByCourseId(id);
+		System.out.println("Deleted!!!");
+	}
+
+	private void findCourseAndReviews(InstructorDAO instructorDAO) {
+		int id = 10;
+		Course course = instructorDAO.findCourseAndReviewsByCourseId(id);
+
+		System.out.println("Course: " + course);
+		System.out.println("Reviews for the course: " + course.getReviews());
+	}
+
+	private void createCourseAndReviews(InstructorDAO instructorDAO) {
+		Course course = new Course("Embrace Stoicism.");
+		Review review1 = new Review("Helped me a lot.");
+		Review review2 = new Review("Great Course, enjoyed a lot.");
+		Review review3 = new Review("What a dumb course, I am a feminist.");
+		course.add(review1);
+		course.add(review2);
+		course.add(review3);
+
+		System.out.println("Saving course" + course);
+		System.out.println("Reviews for the courses: " + course.getReviews());
+
+		instructorDAO.saveCourse(course);
+		System.out.println("Done!!!");
 	}
 
 	private void findInstructorWithCourses(InstructorDAO instructorDAO) {

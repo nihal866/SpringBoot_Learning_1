@@ -18,4 +18,10 @@ public interface InstructorDAO {
     void deleteInstructorDetailById(int id);
 
     List<Course> findCoursesByInstructorId(int id);
+
+    void saveCourse(Course course);
+
+    Course findCourseAndReviewsByCourseId(int id);
+
+    void deleteCourseByCourseId(int id);
 }
