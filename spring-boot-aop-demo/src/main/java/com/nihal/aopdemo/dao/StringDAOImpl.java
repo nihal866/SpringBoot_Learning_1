@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 public class StringDAOImpl implements StringDAO {
 
     @Override
-    public void addAccount() {
+    public boolean addAccount() {
         System.out.println("Doing DB Operation: " + getClass());
+        return true;
     }
 
 }
