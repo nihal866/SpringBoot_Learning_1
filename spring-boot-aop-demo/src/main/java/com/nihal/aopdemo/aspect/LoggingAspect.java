@@ -2,6 +2,7 @@ package com.nihal.aopdemo.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -12,7 +13,13 @@ public class LoggingAspect {
 
     // @Before("execution(public void add*())")
 
-    @Before("execution(* add*())")
+    // @Before("execution(* add*())")
+
+    @Pointcut("execution(* add*())")
+    private void forDaoPackages() {
+    }
+
+    @Before("forDaoPackages()")
     public void beforeAddMethod() {
         System.out.println("\n\n============> Executing before method call <================\n\n");
     }
