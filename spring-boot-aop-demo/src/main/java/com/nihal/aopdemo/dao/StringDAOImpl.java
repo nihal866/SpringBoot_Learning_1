@@ -1,0 +1,13 @@
+package com.nihal.aopdemo.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class StringDAOImpl implements StringDAO {
+
+    @Override
+    public void addAccount() {
+        System.out.println("Doing DB Operation: " + getClass());
+    }
+
+}
