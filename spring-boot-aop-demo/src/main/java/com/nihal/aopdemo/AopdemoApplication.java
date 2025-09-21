@@ -24,8 +24,6 @@ public class AopdemoApplication {
 
 	private void doBeforeAdvice(AccountDAO accountDAO, StringDAO stringDAO) {
 		accountDAO.addAccount();
-		accountDAO.addString();
-		stringDAO.addAccount();
 	}
 
 }
