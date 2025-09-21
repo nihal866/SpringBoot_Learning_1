@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Order(2)
 public class TransactionAspect {
 
-    @Before("execution(* addAccount())")
+    @Before("execution(* addAccount(..))")
     public void fun() {
         System.out.println("\n====================" + getClass());
     }

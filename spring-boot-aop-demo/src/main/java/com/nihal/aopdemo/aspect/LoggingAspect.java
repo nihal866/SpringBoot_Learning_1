@@ -50,7 +50,7 @@ public class LoggingAspect {
      * pointcut1() || pointcut2()
      */
 
-    @Before("execution(* addAccount())")
+    @Before("execution(* addAccount(..))")
     public void fun() {
         System.out.println("\n====================" + getClass());
     }
